@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+
+.postcard{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+}
+
+.postcard svg{
+    position: relative;
+    z-index: 999999999;
+    width: 80%;
+}
+
+.postcard svg path{
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 0.1;
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: textAnimation 4s ease-in-out 1 forwards;
+}
+
+@keyframes textWidth {
+    0%{
+        width:0%;
+    }
+    70%{
+        width: 35%;
+    }
+    71%{
+        width: 35%;
+        top: 50%;
+        left: 50%;
+    }
+    99%{
+        backdrop-filter: blur(0px);
+        background: transparent;
+        border-width: 0;
+    }
+    100%{
+        width: 40%;
+        left: 79%;
+        position: absolute;
+        background: #00000057;
+        border-image: linear-gradient(180deg, rgba(255,0,0,0.711922268907563) 0%, rgba(168,0,0,0.6054796918767507) 52%, rgba(19,0,0,0) 100%) 1;
+        border-width: 2px;
+        border-style: solid;
+        backdrop-filter: blur(15px);
+    }
+}
+@keyframes textAnimation {
+    0%{
+        stroke-dashoffset: 1200;
+    }
+    5%{
+        stroke-dashoffset: 1200;
+    }
+    30%{
+        fill: transparent;
+    }
+    100%{
+        fill: #fff;
+        stroke-dashoffset: 0;
+    }
+}
+
+.postcard.show{
+    display: unset;
+}
+
+.postcard.none-visible{
+    display: none;
+}
+
+.postcard .postcard-overlay{
+    background: #0000009c;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999999;
+    backdrop-filter: blur(25px);
+    animation: overalay 1s ease-in-out 1 forwards;
+}
+
+@keyframes overalay {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.postcard .postcard_wrap{
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    transform: translate(-50%, -50%);
+    background: url("/bitrix/modules/advantika.holiday/assets/img/i.png") no-repeat center / cover;
+    z-index: 9999999;
+    width: 55%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    padding: 100px 30px;
+    text-align: center;
+    box-shadow: -1px 8px 20px 14px #0404047d;
+    animation: visibleCard 5s ease-in-out 1 forwards;
+}
+
+.postcard .postcard_wrap.defender{
+    background: url("/bitrix/modules/advantika.holiday/assets/img/defender.jpg") no-repeat center / cover;
+    justify-content: center;
+}
+
+.postcard .postcard_wrap.women{
+    background: url("/bitrix/modules/advantika.holiday/assets/img/women.jpg") no-repeat center / cover;
+}
+
+.postcard_time{
+    border-radius: 5px;
+    border: linear-gradient(180deg, #ff0000 0%, #a80000 40%, #130000 100%) 1px solid;
+    position: absolute;
+    width: 33%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    z-index: 99999999;
+    padding: 68px 30px;
+    animation: textWidth 4s ease-in-out 1 forwards;
+}
+
+.postcard_wrap__time{
+    text-align: center;
+    color: #FFF;
+    z-index: 99999999;
+    font-family: "Rubik Doodle Shadow", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    animation: visibleCard 5s ease-in-out 1 forwards;
+}
+
+.defender .postcard_wrap__text, .women .postcard_wrap__text{
+    background: #00000099;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.postcard_wrap__text{
+    text-align: left;
+    color: #fff;
+    font-style: italic;
+    text-shadow: 0px 0px 6px black;
+}
+
+.postcard_wrap__text a{
+    color: #fff;
+}
+
+.postcard .postcard_wrap__close{
+    position: absolute;
+    z-index: 999999999;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .2s ease-in-out;
+    animation: visibleCard 5s ease-in-out 1 forwards;
+}
+
+.postcard .postcard_wrap__close:before{
+    font-family: "Font Awesome 5 Free";
+    background: none;
+    content: "\00D7";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #fff;
+    transition: all .2s ease-in-out;
+}
+
+.postcard .postcard_wrap__close:hover{
+    font-size: 2.3rem;
+    transform: rotate(180deg);
+}
+
+/*гирлянда*/
+
+.lightrope {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    margin: -15px 0 0 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+    z-index: 9999999;
+}
+
+.lightrope li {
+    position: relative;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 12px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 20px;
+    display: inline-block;
+    background: #ffffff;
+    box-shadow: 0px 4.66667px 24px 3px #ffffff;
+    -webkit-animation-name: flash-1;
+    animation-name: flash-1;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.lightrope li:nth-child(2n+1) {
+    background: #cb4242;
+    box-shadow: 0px 4.66667px 24px 3px rgb(197, 84, 84);
+    -webkit-animation-name: flash-2;
+    animation-name: flash-2;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+}
+
+.lightrope li:nth-child(4n+2) {
+    background: #a65510;
+    box-shadow: 0px 4.66667px 24px 3px #f0c287;
+    -webkit-animation-name: flash-3;
+    animation-name: flash-3;
+    -webkit-animation-duration: 1.1s;
+    animation-duration: 1.1s;
+}
+
+.lightrope li:nth-child(odd) {
+    -webkit-animation-duration: 1.8s;
+    animation-duration: 1.8s;
+}
+
+.lightrope li:nth-child(3n+1) {
+    -webkit-animation-duration: 1.4s;
+    animation-duration: 1.4s;
+}
+
+.lightrope li:before {
+    content: "";
+    position: absolute;
+    background: #222;
+    width: 10px;
+    height: 9.33333px;
+    border-radius: 3px;
+    top: -4.66667px;
+    left: 1px;
+}
+
+.lightrope li:after {
+    content: "";
+    top: -14px;
+    left: 9px;
+    position: absolute;
+    width: 52px;
+    height: 18.66667px;
+    border-bottom: solid #222 2px;
+    border-radius: 50%;
+}
+
+.lightrope li:last-child:after {
+    content: none;
+}
+
+.lightrope li:first-child {
+    margin-left: -40px;
+}
+
+@-webkit-keyframes flash-1 {
+    0%, 100% {
+        background: #a6540f;
+        box-shadow: 0px 4.66667px 24px 3px #a6540f;
+    }
+    50% {
+        background: rgb(157, 66, 30);
+        box-shadow: 0px 4.66667px 24px 3px rgb(126, 43, 3);
+    }
+}
+
+@keyframes flash-1 {
+    0%, 100% {
+        background: #ce4f50;
+        box-shadow: 0px 4.66667px 24px 3px #ce4f50;
+    }
+    50% {
+        background: rgb(192, 27, 30);
+        box-shadow: 0px 4.66667px 24px 3px rgb(161, 33, 33);
+    }
+}
+
+@-webkit-keyframes flash-2 {
+    0%, 100% {
+        background: #a6e7ff;
+        box-shadow: 0px 4.66667px 24px 3px #a6e7ff;
+    }
+    50% {
+        background: rgba(0, 188, 255, 0.4);
+        box-shadow: 0px 4.66667px 24px 3px rgba(0, 183, 255, 0.2);
+    }
+}
+
+@keyframes flash-2 {
+    0%, 100% {
+        background: #ffc500;
+        box-shadow: 0px 4.66667px 24px 3px #ffc500;
+    }
+    50% {
+        background: rgba(255, 201, 0, 0.4);
+        box-shadow: 0px 4.66667px 24px 3px rgba(255, 201, 0, 0.2);
+    }
+}
+
+@-webkit-keyframes flash-3 {
+    0%, 100% {
+        background: #ffffff;
+        box-shadow: 0px 4.66667px 24px 3px #ffffff;
+    }
+    50% {
+        background: rgb(201, 201, 201, 0.4);
+        box-shadow: 0px 4.66667px 24px 3px rgb(195, 195, 195, 0.2);
+    }
+}
+
+@keyframes flash-3 {
+    0%, 100% {
+        background: #ffffff;
+        box-shadow: 0px 4.66667px 24px 3px #ffffff;
+    }
+    50% {
+        background: rgb(194, 194, 194, 0.4);
+        box-shadow: 0px 4.66667px 24px 3px rgb(206, 206, 206, 0.2);
+    }
+}
+
+/*Подарки*/
+
+.present{
+    position: absolute;
+    z-index: 9999999;
+    filter: blur(1px);
+    animation: visibleCardPresent 5s ease-in-out 1 forwards;
+}
+
+.present.one{
+    width: 400px;
+    left: 40%;
+    animation: present_animate 4s ease-in-out infinite;
+}
+
+.present.two{
+    width: 800px;
+    right: 3%;
+    top: 25%;
+    transform: rotate(43deg);
+    animation: present_animate 3.5s ease-in-out infinite;
+}
+
+.present.free{
+    width: 600px;
+    transform: rotate(-28deg);
+    bottom: 0;
+    left: 10%;
+    animation: present_animate 3s ease-in-out infinite;
+}
+
+@keyframes present_animate {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes visibleCard {
+    0%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes visibleCardPresent {
+    0%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/*media*/
+
+@media (max-width: 1400px) {
+    .present.one{
+        width: 300px;
+    }
+
+    .present.two{
+        width: 600px;
+        right: 0%;
+        top: 30%;
+    }
+
+    .present.free{
+        width: 450px;
+        bottom: 47px;
+        left: 10%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .present.one{
+        left: 30%;
+    }
+
+    .present.two{
+        width: 500px;
+        right: -2%;
+        top: 27%;
+    }
+
+    .present.free{
+        width: 350px;
+    }
+}
+
+@media (max-width: 890px) {
+    .postcard_time{
+        position: absolute;
+        width: 33%;
+        top: 20%;
+        left: 50%;
+        flex-direction: row;
+        padding: 30px 30px;
+        justify-content: space-around;
+    }
+
+    .postcard svg{
+        width: 30%;
+        display: none;
+    }
+
+    @keyframes textWidth {
+        0%{
+            width:0%;
+        }
+        70%{
+            width: 60%;
+        }
+        71%{
+            width: 60%;
+            top: 50%;
+            left: 50%;
+        }
+        99%{
+            backdrop-filter: blur(0px);
+            background: transparent;
+        }
+        100%{
+            width: 85%;
+            position: absolute;
+            background: #00000057;
+            backdrop-filter: blur(15px);
+        }
+    }
+
+    .postcard .postcard_wrap{
+        width: 85%;
+        left: 50%;
+        top: 60%;
+    }
+
+    .present.one{
+        left: 10%;
+    }
+
+    .present.two{
+        right: -25%;
+        top: 27%;
+    }
+
+    .present.free{
+        bottom: 13px;
+        left: -6%;
+    }
+}
+
+@media (max-width: 665px) {
+    @keyframes textWidth {
+        0% {
+            width: 0%;
+        }
+        70% {
+            width: 60%;
+        }
+        71% {
+            width: 60%;
+            top: 50%;
+            left: 50%;
+        }
+        99% {
+            backdrop-filter: blur(0px);
+            background: transparent;
+        }
+        100% {
+            width: 85%;
+            position: absolute;
+            backdrop-filter: blur(15px);
+        }
+    }
+    .postcard_wrap__time{
+        font-size: 2.3rem;
+    }
+}
+
+/*snow*/
+
+
+/*Таймер*/
+.postcard_wrap__countdown{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.snowflakes-box{
+    z-index: 999999!important;
+}

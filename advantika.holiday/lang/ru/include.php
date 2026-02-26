@@ -1,0 +1,5 @@
+<?php
+
+$MESS['ADVANTIKA_CHRISTMAS_MODULE_NAME'] = 'Адвантика: Праздничные открытки';
+$MESS['ADVANTIKA_CHRISTMAS_MENU_ITEM_SETTINGS'] = ' - Настройки';
+$MESS['ADVANTIKA_CHRISTMAS_MENU_ITEM_CHRISTMASS'] = ' - Список';
